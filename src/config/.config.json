@@ -1,0 +1,21 @@
+{
+  "project": {
+    "undefined": "vue-admin-shop",
+    "vue-admin-shop.com.cn": "vue-admin-shop"
+  },
+  "functionList": {
+    "客户详情": {
+      "scope": [
+        "Admin",
+        "Jewelry",
+        "WeddingPhoto"
+      ],
+      "apps": [
+        "!ctf"
+      ],
+      "versions": [
+        "1.0.0"
+      ]
+    }
+  }
+}

@@ -1,0 +1,5 @@
+function:
+  客户详情:
+    scope: ["Admin", "Jewelry", "WeddingPhoto"]
+    apps: ["!ctf"]
+    versions: ["1.0.0"]
