@@ -24,7 +24,8 @@ let store = new Vuex.Store({
   // 模块化
   modules: {
     user,
-    home
+    home,
+    global
   }
 })
 

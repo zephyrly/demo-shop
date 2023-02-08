@@ -1,5 +1,4 @@
 import Vue from 'vue'
-import elTableInfiniteScroll from 'el-table-infinite-scroll'
 import infiniteScroll from 'vue-infinite-scroll'
 import ElFormRenderer from '@femessage/el-form-renderer'
 import {
@@ -72,7 +71,6 @@ import {
   Notification
 } from 'element-ui'
 
-Vue.use(elTableInfiniteScroll)
 Vue.use(infiniteScroll)
 Vue.use(Pagination)
 Vue.use(Dialog)

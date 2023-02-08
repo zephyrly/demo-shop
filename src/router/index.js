@@ -15,6 +15,7 @@ import cate from '@/views/components/goods/cate'
 import params from '@/views/components/goods/params'
 import Order from '@/views/components/order/order'
 import report from '@/views/components/report/report'
+import virtualList from '@/components/virtualList'
 
 const originalPush = VueRouter.prototype.push
 
@@ -41,7 +42,8 @@ const routes = [
       { path: '/orders', component: Order },
       { path: '/categories', component: cate },
       { path: '/params', component: params },
-      { path: '/reports', component: report }
+      { path: '/reports', component: report },
+      { path: '/virtualList', component: virtualList }
     ]
   },
   {
