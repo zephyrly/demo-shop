@@ -17,68 +17,80 @@ import Order from '@/views/components/order/order'
 import report from '@/views/components/report/report'
 import virtualList from '@/components/virtualList'
 
+import store from '@/store/index'
+
 const originalPush = VueRouter.prototype.push
 
-VueRouter.prototype.push = function push (location) {
-  return originalPush.call(this, location).catch(err => err)
+VueRouter.prototype.push = function push(location) {
+    return originalPush.call(this, location).catch((err) => err)
 }
 
 Vue.use(VueRouter)
 
 const routes = [
-  {
-    path: '/home',
-    name: 'Home',
-    component: Home,
-    redirect: '/welcome',
-    children: [
-      { path: '/welcome', component: Welcome },
-      { path: '/users', component: Table },
-      { path: '/roles', component: Roles },
-      { path: '/rights', component: Rights },
-      { path: '/demo', component: Demo },
-      { path: '/goods', component: Goods },
-      { path: '/goods/add', component: Add },
-      { path: '/orders', component: Order },
-      { path: '/categories', component: cate },
-      { path: '/params', component: params },
-      { path: '/reports', component: report },
-      { path: '/virtualList', component: virtualList }
-    ]
-  },
-  {
-    path: '/login',
-    name: 'Login',
-    component: Login
-  },
-  { path: '/', redirect: '/login' }
+    {
+        path: '/home',
+        name: 'Home',
+        component: Home,
+        redirect: '/welcome',
+        children: [
+            { path: '/welcome', component: Welcome },
+            {
+                path: '/users',
+                name: 'users',
+                component: Table,
+                meta: {
+                    title: 'keepAlive',
+                    keepAlive: true, // 这里指定users组件的缓存性
+                },
+            },
+            { path: '/roles', component: Roles },
+            { path: '/rights', component: Rights },
+            { path: '/demo', component: Demo },
+            { path: '/goods', component: Goods },
+            { path: '/goods/add', component: Add },
+            { path: '/orders', component: Order },
+            { path: '/categories', component: cate },
+            { path: '/params', component: params },
+            { path: '/reports', component: report },
+            { path: '/virtualList', component: virtualList },
+        ],
+    },
+    {
+        path: '/login',
+        name: 'Login',
+        component: Login,
+    },
+    { path: '/', redirect: '/login' },
 ]
 
 const router = new VueRouter({
-  mode: 'history',
-  base: process.env.BASE_URL,
-  routes
+    mode: 'history',
+    base: process.env.BASE_URL,
+    routes,
 })
 
 // 挂载路由导航守卫
 router.beforeEach((to, from, next) => {
-  // to 将要访问的路径
-  // from 代表从哪个路径跳转而来
-  // next 是一个函数，表示放行
-  //     next()  放行    next('/login')  强制跳转
-  if (to.path === '/login') return next()
-  // 获取token
-  const tokenStr = window.sessionStorage.getItem('token')
-  if (!tokenStr) return next('/login')
+    if (to.meta.keepAlive) {
+      store.commit('global/keepAlive', to.name)
+    }
+    // to 将要访问的路径
+    // from 代表从哪个路径跳转而来
+    // next 是一个函数，表示放行
+    //     next()  放行    next('/login')  强制跳转
+    if (to.path === '/login') return next()
+    // 获取token
+    const tokenStr = window.sessionStorage.getItem('token')
+    if (!tokenStr) return next('/login')
 
-  // 使用NProgress，进行跳转的进度条设置
-  NProgress.start()
-  next()
+    // 使用NProgress，进行跳转的进度条设置
+    NProgress.start()
+    next()
 })
 
 router.afterEach(() => {
-  NProgress.done()
+    NProgress.done()
 })
-
 
 export default router

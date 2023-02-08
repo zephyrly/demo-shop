@@ -51,7 +51,10 @@ const getters = {
   },
   getUserInfo: state => {
     return state.UserInfo;
-  }
+  },
+  adf (state) {
+    return "姓名:" + state.username
+  },
 }
 
 const actions = {

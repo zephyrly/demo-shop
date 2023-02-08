@@ -3,6 +3,7 @@ import App from './App.vue'
 import router from './router'
 import store from './store/index'
 import './plugins/element.js'
+import vant from 'vant'
 import '@/assets/fonts/iconfont.css'
 import './assets/css/global.css'
 import '@/mock'
@@ -15,6 +16,7 @@ import '@/style/global.css' // 在main.js中引入公共样式
 // 引入 [res,err] async处理报错使用try catch方式，await-to-js处理async await使我们能使用[err]进行报错处理
 import to from 'await-to-js';
 Vue.prototype.$to = to
+
 
 
 // 配置富文本编辑器

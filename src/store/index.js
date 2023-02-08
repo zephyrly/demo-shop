@@ -6,6 +6,7 @@ import state from './state'
 import actions from './actions'
 import user from './modules/user'
 import home from './modules/home'
+import global from './modules/global'
 
 // state 存放状态
 // mutations state成员操作

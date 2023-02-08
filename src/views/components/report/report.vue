@@ -15,9 +15,7 @@
             <div id="main" style="width: 750px;height:400px;"></div>
         </el-card>
         <!--传入include数组-->
-        <keep-alive :include="keepAliveComponents">
-            <router-view></router-view>
-        </keep-alive>
+        <button @click="goUser" style="float:left">goUser</button>
     </div>
 </template>
 
@@ -81,7 +79,11 @@ export default {
         // 5. 展示数据
         myChart.setOption(result)
     },
-    methods: {},
+    methods: {
+      goUser(){
+        this.$router.push({ path: "/users" });
+      }
+    },
 }
 </script>
 

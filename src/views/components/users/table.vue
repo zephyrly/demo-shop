@@ -8,6 +8,7 @@
     </el-breadcrumb>
     <!-- 为了模拟mock随意建的表 -->
     <button @click="VuexClick" style="float:left">VuexClick</button>
+    <button @click="goReport" style="float:left">goReport</button>
     <el-table :data="list" stripe style="width: 100%" border>
       <el-table-column prop="content" label="日期" width="180">
       </el-table-column>
@@ -22,7 +23,7 @@
 <script>
 import { mapGetters } from 'vuex'
 export default {
-  name: 'Ratings',
+  name: 'users',
   data () {
     return {
       msg: '评价页面',
@@ -63,6 +64,9 @@ export default {
     // vuex的demo
     VuexClick () {
       console.log(this.UserInfo)
+    },
+    goReport() {
+      this.$router.push({ path: "/reports" });
     }
   }
 }
