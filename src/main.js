@@ -17,6 +17,9 @@ import '@/style/global.css' // 在main.js中引入公共样式
 import to from 'await-to-js';
 Vue.prototype.$to = to
 
+import htmlToPdf from "./utils/htmlToPdf";
+Vue.use(htmlToPdf);
+
 
 
 // 配置富文本编辑器

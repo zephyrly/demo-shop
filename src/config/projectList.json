@@ -1,6 +1,6 @@
 {
   "vue-admin-shop": {
-    "name": "马总",
+    "name": "测试环境",
     "env": "development",
     "project": "vue-admin-shop",
     "app": "vue-admin-shop",

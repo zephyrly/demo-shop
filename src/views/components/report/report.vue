@@ -15,7 +15,8 @@
             <div id="main" style="width: 750px;height:400px;"></div>
         </el-card>
         <!--传入include数组-->
-        <button @click="goUser" style="float:left">goUser</button>
+        <el-button type="primary" @click="goUser" style="float:left">goUser</el-button>
+        <el-button type="primary" @click="turnPDF" style="float:left">turnPDF</el-button>
     </div>
 </template>
 
@@ -82,7 +83,60 @@ export default {
     methods: {
       goUser(){
         this.$router.push({ path: "/users" });
-      }
+      },
+    //   turnPDF(){
+    //   // 滚动到顶部，确保打印内容完整
+    //   document.body.scrollTop = 0; // IE的
+    //   document.documentElement.scrollTop = 0; // 其他
+    //   this.htmlToPdf("pdfDom", "统计报告");
+    //   },
+      turnPDF() {
+            // 滚动到顶部，确保打印内容完整
+            let element = document.getElementById(`pdf`)
+            let w = element.width();
+            let h = element.height();
+            let offsetTop = element.offset().top;
+            let offsetLeft = element.offset().left;
+            let canvas = document.createElement('canvas');
+            let abs = 0;
+            let position = 0;
+            let win_i = $(window).width();
+            let win_o = window.innerWidth;
+            if (win_o > win_i) {
+                abs = (win_o - win_i) / 2;
+            }
+            canvas.width = w * 2;
+            canvas.height = h * 2;
+            let context = canvas.getContext("2d");
+            context.scale(2, 2);
+            context.translate(-offsetLeft - abs, -offsetTop);
+            html2canvas(element,{
+                onrendered:function (canvas) {
+                    let contentWidth = canvas.width;
+                    let contentHeight = canvas.height;
+                    let pageHeight = contentHeight / 592.28 * 841.89;
+                    let leftHeight = contentHeight;
+                    let imgWidth = 595.28;
+                    let imgHeight = 592.28 / contentWidth * contentHeight*1.5;
+                    let pageData = canvas.toDataURL('image/jpeg', 1.0);
+                    let pdf = new jsPDF('', 'pt', 'a4');
+                    if (leftHeight < pageHeight) {
+                        pdf.addImage(pageData, 'JPEG', 0, position, imgWidth, imgHeight)
+                    } else {
+                        while (leftHeight > 0) {
+                            pdf.addImage(pageData, 'JPEG', 0, position, imgWidth, imgHeight);
+                            leftHeight -= pageHeight;
+                            position -= 841.89;
+                            if (leftHeight > 0) {
+                                pdf.addPage();
+                            }
+                        }
+                    }
+                    document.getElementById("iframe123").src = pdf.output('datauristring');
+                },background: '#FFF'
+            })
+        
+        },
     },
 }
 </script>
