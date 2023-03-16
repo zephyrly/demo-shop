@@ -31,7 +31,7 @@ import 'quill/dist/quill.bubble.css'
 Vue.use(VueQuillEditor)
 
 // 配置axios到原型链中
-axios.defaults.baseURL = 'http://43.139.225.225:8889/api/private/v1/'
+axios.defaults.baseURL = 'https://www.okzfans.top/api/private/v1/'
 Vue.prototype.$http = axios
 Vue.prototype._ = _
 

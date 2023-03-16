@@ -135,3 +135,23 @@ function handleData(rows) {
     })
     console.log(data)
 }
+
+// 参数rows为平面列表数据
+function handleData(rows) {
+    let temp = []
+    let data = []
+    rows.map((item) => {
+        let index = temp.indexOf(item.parent_id)
+        if (index >= 0) {
+            data[index].tags.push(item)
+        } else {
+            temp.push(item.parent_id)
+            data.push({
+                gulp_name: item.parent_name,
+                parent_id: item.parent_id,
+                child: [item],
+            })
+        }
+    })
+    console.log(data)
+}

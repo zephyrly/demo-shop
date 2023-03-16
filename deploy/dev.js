@@ -16,6 +16,7 @@ const creat = {
         project: null,
     },
     init: async function() {
+        console.log(process.cwd())
         await this.getEnvs()
         const projectName = process.argv[2]
         console.log(process.argv)
