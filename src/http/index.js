@@ -1,5 +1,6 @@
 /* eslint-disable */
 import axios from 'axios'
+import Qs from 'qs'
 import { Message, MessageBox } from 'element-ui'
 
 // 创建axios实例
@@ -8,12 +9,14 @@ const service = axios.create({
   timeout: 5000 // 请求超时时间
 })
 
+// 在axios直接请求里面可以使用JSON.stringfly转换/x-www-form-urlencoded，而使用请求拦截器，必须要用qs.stringfly转换data
+
 // request拦截器
 service.interceptors.request.use(
   config => {
-    config.data = JSON.stringify(config.data) // 数据转化,也可以使用qs转换
+    config.data = Qs.stringify(config.data) // 数据转化,也可以使用qs转换
     config.headers = {
-      'Content-Type': 'application/json;charset=utf-8' // 配置请求头
+      'Content-Type': 'application/x-www-form-urlencoded' // 配置请求头
     }
     const token = window.sessionStorage.getItem('token') // 这里取token之前，你肯定需要先拿到token,存一下
     if (token) {

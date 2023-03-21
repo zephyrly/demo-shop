@@ -162,6 +162,7 @@ import { getOrderList } from '@/api/order.js'
 import uploadImage from '@/components/upLoadImg'
 import virtualSelect from '@/components/virtualSelect'
 import virtualScrollSelect from '@/components/virtualScrollSelect'
+// import axios from 'axios'
 export default {
     name: '',
     props: {},
@@ -263,6 +264,17 @@ export default {
         },
     },
     created() {
+        
+    //     axios({
+    //     method: "POST",
+    //     url: `http://127.0.0.1:8888/api/private/v1/goods`,
+    //     data: JSON.stringify({a:1}),
+    //     headers: {
+    //         'Content-Type': 'application/x-www-form-urlencoded'
+    //     }
+    // }).then(function(res) {
+    //     console.log(res);
+    // });
         this._getOrderList()
         for (let i = 0; i < 300000; i++) {
             this.selectData.push({

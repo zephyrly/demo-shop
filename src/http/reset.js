@@ -1,9 +1,9 @@
 /* eslint-disable */
-import http from './index.js'
+import service from './index.js'
 
 export default {
   post (url, data, config) {
-    return http.post(url, data, config)
+    return service.post(url, data, config)
   },
 
   get (url, params, config) {
@@ -15,11 +15,11 @@ export default {
     }
     if (config) Object.assign(getConfig, config)
 
-    return http.get(url, getConfig)
+    return service.get(url, getConfig)
   },
 
   put (url, data, config) {
-    return http.put(url, data, config)
+    return service.put(url, data, config)
   },
 
   delete (url, params, config) {
@@ -31,6 +31,6 @@ export default {
     }
     if (config) Object.assign(delConfig, config)
 
-    return http.delete(url, delConfig)
+    return service.delete(url, delConfig)
   }
 }
