@@ -5,7 +5,8 @@ import { Message, MessageBox } from 'element-ui'
 
 // 创建axios实例
 const service = axios.create({
-  baseURL: 'http://43.139.225.225:8889/api/private/v1', // api 的 base_url
+  // baseURL: 'http://43.139.225.225:8889/api/private/v1', // api 的 base_url 原宝塔接口
+  baseURL: 'https://www.okzfans.top/api/private/v1',
   timeout: 5000 // 请求超时时间
 })
 

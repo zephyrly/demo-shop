@@ -7,11 +7,10 @@ import vant from 'vant'
 import '@/assets/fonts/iconfont.css'
 import './assets/css/global.css'
 import '@/mock'
+import '@/pwa/registerServiceWorker'
 import _ from 'lodash'
 import axios from 'axios'
 import '@/style/global.css' // 在main.js中引入公共样式
-
-
 
 // 引入 [res,err] async处理报错使用try catch方式，await-to-js处理async await使我们能使用[err]进行报错处理
 import to from 'await-to-js';
@@ -25,9 +24,9 @@ Vue.use(htmlToPdf);
 // 配置富文本编辑器
 import VueQuillEditor from 'vue-quill-editor'
 // require styles 导入富文本编辑器对应的样式
-import 'quill/dist/quill.core.css'
-import 'quill/dist/quill.snow.css'
-import 'quill/dist/quill.bubble.css'
+// import 'quill/dist/quill.core.css'
+// import 'quill/dist/quill.snow.css'
+// import 'quill/dist/quill.bubble.css'
 Vue.use(VueQuillEditor)
 
 // 配置axios到原型链中

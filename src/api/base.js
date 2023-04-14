@@ -1,4 +1,5 @@
 import http from '../utils/http'
+import request from '@/http/index.js'
 /**
  *  @parms resquest 请求地址 例如：http://197.82.15.15:8088/request/...
  *  @param '/testIp'代表vue-cil中config，index.js中配置的代理
@@ -18,3 +19,4 @@ export function getMenus (params) {
 export function getList (params) {
   return http.post('/api/ratings/list', params)
 }
+

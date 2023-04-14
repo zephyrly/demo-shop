@@ -7,6 +7,7 @@
             <router-view v-if="$route.meta.keepAlive"></router-view>
         </keep-alive>
         <router-view v-if="!$route.meta.keepAlive"></router-view> -->
+        <Service-worker-update-popup/>
     </div>
 </template>
 
@@ -14,10 +15,13 @@
 // import HelloWorld from '@/components/HelloWorld.vue'
 
 import { mapState } from 'vuex'
+import ServiceWorkerUpdatePopup from '@/pwa/components/ServiceWorkerUpdatePopup'
 
 export default {
     name: 'app',
-    components: {},
+    components: {
+        ServiceWorkerUpdatePopup
+    },
     computed: {
         ...mapState({
             keepAliveComponents: (state) => {

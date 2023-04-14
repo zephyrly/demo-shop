@@ -1,4 +1,5 @@
 /* eslint-disable */
+/* request 文件 (暂未用到)*/ 
 // 导入axios
 import axios from 'axios'
 // 使用element-ui Message做消息提醒
@@ -6,7 +7,7 @@ import { Message } from 'element-ui'
 // 1. 创建新的axios实例
 const service = axios.create({
   // 公共接口--这里注意后面会讲
-  baseURL: 'http://43.139.225.225:8889/api/private/v1',
+  baseURL: 'https://www.okzfans.top/api/private/v1',
   // 超时时间单位是ms，这里设置了3s的超时时间
   timeout: 3 * 1000
 })
